@@ -8,7 +8,7 @@ const ItemSchema = new Schema({
   description: String,
   price: String,
   category: String,
-  dateAdded: String,
+  dateAdded: Date,
 })
 
 const Item = mongoose.model('Item', ItemSchema)
