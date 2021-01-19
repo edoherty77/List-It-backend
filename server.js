@@ -1,5 +1,5 @@
 const express = require('express')
-// const routes = require('./routes')
+const routes = require('./routes')
 const cors = require('cors')
 // const session = require('express-session')
 const mongoose = require('mongoose')
@@ -16,8 +16,8 @@ app.get('/', (req, res) => {
 })
 
 // middleware - API routes
-// app.use('/api/v1', routes.categories)
-// app.use('/api/v1/items', routes.items)
+app.use('/api/v1', routes.categories)
+app.use('/api/v1/items', routes.items)
 
 const CONNECTION_URL =
   'mongodb+srv://evan:evan@list-it-db.tjkfv.mongodb.net/List-It-DB?retryWrites=true&w=majority'
