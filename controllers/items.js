@@ -1,21 +1,39 @@
 const db = require('../models')
 
 //GET ALL ITEMS ROUTE
-const index = async (req, res) => {
-  console.log(req.body)
-  try {
-    //find all
-    const foundItems = db.Item.find({})
-    if (!foundItems.length)
-      return await res.json({
-        message: 'No items found',
-      })
+const search = async (req, res) => {
+  const q = req.params.item
+  console.log('q', q)
 
-    //return
-    await res.json({ items: foundItems })
-  } catch (error) {
-    console.log(error)
-  }
+  db.Item.find(
+    {
+      title: {
+        $regex: new RegExp(q),
+      },
+    },
+    {
+      _id: 0,
+      _v: 0,
+    },
+    function (err, data) {
+      res.json(data)
+      // console.log(data)
+    },
+  ).limit(10)
+
+  // try {
+  //find all
+  // const foundItems = db.Item.find({ $title: { $search: req.params.item } })
+  // console.log(foundItems)
+  // if (!foundItems.length)
+  //   return await res.json({
+  //     message: 'No items found',
+  //   })
+  // //return
+  // await res.json({ items: foundItems })
+  // } catch (error) {
+  //   console.log(error)
+  // }
 }
 
 //SHOW ITEM ROUTE
@@ -117,7 +135,7 @@ const destroy = async (req, res) => {
 }
 
 module.exports = {
-  index,
+  search,
   show,
   create,
   update,
