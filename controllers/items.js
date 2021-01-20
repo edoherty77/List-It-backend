@@ -3,11 +3,9 @@ const db = require('../models')
 //GET ALL ITEMS ROUTE
 const search = async (req, res) => {
   const q = req.params.item
-  console.log('q', q)
-
   db.Item.find(
     {
-      title: {
+      item: {
         $regex: new RegExp(q),
       },
     },
@@ -17,20 +15,19 @@ const search = async (req, res) => {
     },
     function (err, data) {
       res.json(data)
-      // console.log(data)
     },
   ).limit(10)
 
   // try {
-  //find all
-  // const foundItems = db.Item.find({ $title: { $search: req.params.item } })
-  // console.log(foundItems)
-  // if (!foundItems.length)
-  //   return await res.json({
-  //     message: 'No items found',
-  //   })
-  // //return
-  // await res.json({ items: foundItems })
+  //   // find all
+  //   const foundItems = db.Item.find({})
+  //   console.log(foundItems)
+  //   if (!foundItems.length)
+  //     return await res.json({
+  //       message: 'No items found',
+  //     })
+  //   //return
+  //   // await res.json({ items: foundItems })
   // } catch (error) {
   //   console.log(error)
   // }
