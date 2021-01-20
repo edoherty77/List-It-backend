@@ -5,7 +5,7 @@ const search = async (req, res) => {
   const q = req.params.item
   db.Item.find(
     {
-      item: {
+      title: {
         $regex: new RegExp(q),
       },
     },
@@ -17,20 +17,6 @@ const search = async (req, res) => {
       res.json(data)
     },
   ).limit(10)
-
-  // try {
-  //   // find all
-  //   const foundItems = db.Item.find({})
-  //   console.log(foundItems)
-  //   if (!foundItems.length)
-  //     return await res.json({
-  //       message: 'No items found',
-  //     })
-  //   //return
-  //   // await res.json({ items: foundItems })
-  // } catch (error) {
-  //   console.log(error)
-  // }
 }
 
 //SHOW ITEM ROUTE
