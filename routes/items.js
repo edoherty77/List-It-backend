@@ -2,7 +2,7 @@ const router = require('express').Router()
 const ctrl = require('../controllers')
 
 // routes
-router.get('/:title', ctrl.items.index)
+router.get('/', ctrl.items.index)
 router.get('/:id', ctrl.items.show)
 router.post('/', ctrl.items.create)
 router.put('/:id', ctrl.items.update)
