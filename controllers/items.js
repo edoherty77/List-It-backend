@@ -2,6 +2,7 @@ const db = require('../models')
 
 //GET ALL ITEMS ROUTE
 const index = async (req, res) => {
+  console.log(req.body)
   try {
     //find all
     const foundItems = db.Item.find({})
@@ -19,6 +20,7 @@ const index = async (req, res) => {
 
 //SHOW ITEM ROUTE
 const show = async (req, res) => {
+  console.log(req.params.id)
   //use url id to find specific item
   db.Item.findById(req.params.id, (err, foundItem) => {
     if (err) console.log('Error in items#show:', err)
