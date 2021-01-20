@@ -1,9 +1,10 @@
 const express = require('express')
 const routes = require('./routes')
 const cors = require('cors')
-// const session = require('express-session')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+
+// const seedDB = require('./seeds')
 
 const app = express()
 
@@ -11,9 +12,8 @@ app.use(bodyParser.json({ limit: '30mb', extended: true }))
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors())
 
-app.get('/', (req, res) => {
-  res.send('yo')
-})
+//Run seeds file
+// seedDB()
 
 // middleware - API routes
 app.use('/api/v1', routes.categories)
