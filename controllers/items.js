@@ -13,7 +13,7 @@ const search = async (req, res) => {
     },
     {
       _id: 0,
-      _v: 0,
+      __v: 0,
     },
     function (err, data) {
       res.json(data)
