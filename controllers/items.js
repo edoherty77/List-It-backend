@@ -3,7 +3,6 @@ const db = require('../models')
 //GET ALL ITEMS ROUTE
 const search = async (req, res) => {
   const q = req.params.item
-  console.log(q)
   db.Item.find(
     {
       title: {
@@ -12,7 +11,6 @@ const search = async (req, res) => {
       },
     },
     function (err, data) {
-      console.log(data)
       res.json(data)
     },
   ).limit(10)
