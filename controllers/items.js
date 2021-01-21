@@ -7,7 +7,8 @@ const search = async (req, res) => {
   db.Item.find(
     {
       title: {
-        $regex: new RegExp(q),
+        // $regex: new RegExp(q),
+        $regex: new RegExp(q, 'i'),
       },
     },
     function (err, data) {
